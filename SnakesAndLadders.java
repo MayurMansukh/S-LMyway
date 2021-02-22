@@ -22,9 +22,6 @@ public class SnakesAndLadders {
             System.out.println("\nThere are snakes on  17, 54, 62, 64, 87, 93, 95 and 98. Tread with care!");
             System.out.println("\nThere are ladders on 4, 16, 35, 50, 57, 67, 68 and 86. Good Luck!");
 
-            if ((player1Index + dThrow) == 0) {
-                System.out.println("\nif you dont wnt play now, so your current postion same" + player1Index + ".");
-            } else {
                 player1Index += dThrow;
                 System.out.println("\nPress any key to see whether you encountered a snake or a ladder.");
                 br.readLine();
