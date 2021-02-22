@@ -1,5 +1,5 @@
-import java.util.*;
-import java.io.*;
+import java.util.*; 
+import java.io.*; 
 public class SnakesAndLadders {
     public static void snakeGame() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -7,10 +7,13 @@ public class SnakesAndLadders {
         System.out.println("===================================================================================");
         System.out.println("Press an key to start the game...");
         br.readLine();
+        System.out.println("\nThere are snakes on  17, 54, 62, 64, 87, 93, 95 and 98. Tread with care!");
+        System.out.println("\nThere are ladders on 4, 16, 35, 50, 57, 67, 68 and 86. Good Luck!");
         Random r = new Random();
         int player1Index = 0;
         int turn1 = 1;
         while (player1Index != 100) {
+            System.out.println("================================================================================");
             System.out.println("\nPlayer 1, press any key to shuffle the die...");
             br.readLine();
             int dThrow = r.nextInt(6);
@@ -18,11 +21,14 @@ public class SnakesAndLadders {
                 dThrow++;
             }
             System.out.println("The number on the die is " + dThrow);
-            System.out.println("\n========= checks No Play, Ladder or Snake.==============");
-            System.out.println("\nThere are snakes on  17, 54, 62, 64, 87, 93, 95 and 98. Tread with care!");
-            System.out.println("\nThere are ladders on 4, 16, 35, 50, 57, 67, 68 and 86. Good Luck!");
 
+            if((player1Index+dThrow)>100)
+            {
+                System.out.println("You will have to wait for the next turn, you have exceeded 100.");
+            }
+            else{
                 player1Index += dThrow;
+                System.out.println("\nYou have progressed by "+dThrow+" square, and your new position is "+player1Index+".");
                 System.out.println("\nPress any key to see whether you encountered a snake or a ladder.");
                 br.readLine();
                 switch (player1Index) {
@@ -93,13 +99,21 @@ public class SnakesAndLadders {
                     default:
                         System.out.println("No snakes or ladders here.");
                 }
+                        turn1++;
             }
+                if(player1Index == 100)
+                {
+                         System.out.println("\nno of dice play to win the game is " +turn1);
+                }
+                        dThrow++;
         }
+
     }
 
     public static void main(String[] args) throws IOException {
         SnakesAndLadders s = new SnakesAndLadders();
         s.snakeGame();
+
     }
 }
 
